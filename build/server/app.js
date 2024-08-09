@@ -12,6 +12,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 // import cors - Cross Origin Resource Sharing
 var cors_1 = __importDefault(require("cors"));
+// Setup Routes
+var routes_1 = __importDefault(require("../routes"));
 // instantiate app as an express module
 var app = express_1.default();
 // set default development port to 3000
@@ -23,10 +25,8 @@ app.use(express_1.default.urlencoded({
 }));
 // make use of cors module in the app
 app.use(cors_1.default());
-// setup root route
-app.get('/', function (req, res) {
-    res.status(200).json({ title: 'ImageIn Server Running' });
-});
+// make use of routes module in the app
+app.use('/', routes_1.default);
 // listen to incoming requests on development port
 app.listen(port, function () {
     console.log("ImageIn server running at " + port);
