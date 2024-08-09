@@ -10,6 +10,12 @@ import express from 'express';
 // import cors - Cross Origin Resource Sharing
 import cors from 'cors';
 
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const { ENV } = process.env;
+
 // Setup Routes
 import routes from '../routes';
 
@@ -35,7 +41,7 @@ app.use('/', routes);
 
 // listen to incoming requests on development port
 app.listen(port, (): void => {
-  console.log(`ImageIn server running at ${port}`);
+  console.log(`ImageIn server running at ${port} with ${ENV} environment`);
 });
 
 // export app for use in other node modules
