@@ -13,7 +13,6 @@ let returnPathName: string;
 // accpet directory and filename to construct path and return it
 const pathnameGeneratorRootDirectory = (directory: string, filename: unknown): string => {
   returnPathName = path.join(__dirname, `../assets/${directory}/${filename}`) as string;
-
   return returnPathName;
 };
 

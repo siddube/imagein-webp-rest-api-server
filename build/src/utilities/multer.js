@@ -9,8 +9,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 // import multer module
 var multer_1 = __importDefault(require("multer"));
+// import dotenv module for setting environment variables with .env file
 var dotenv_1 = __importDefault(require("dotenv"));
+// run dotenv congig
 dotenv_1.default.config();
+// set env variable from .env file
 var ENV = process.env.ENV;
 // set and map .png, .jpg and .jpeg to known mime types
 var mime_type_map = {
@@ -27,6 +30,7 @@ var storage = multer_1.default.diskStorage({
         if (isValid) {
             err = null;
         }
+        // run callback with evnronment variable
         if (ENV === 'dev') {
             cb(err, './src/assets/uploads');
         }

@@ -6,10 +6,11 @@ Multer image upload module - multer.ts
 // import multer module
 import multer from 'multer';
 
+// import dotenv module for setting environment variables with .env file
 import dotenv from 'dotenv';
-
+// run dotenv congig
 dotenv.config();
-
+// set env variable from .env file
 const { ENV } = process.env;
 
 // set and map .png, .jpg and .jpeg to known mime types
@@ -28,6 +29,7 @@ const storage = multer.diskStorage({
     if (isValid) {
       err = null as unknown as Error;
     }
+    // run callback with evnronment variable
     if (ENV === 'dev') {
       cb(err, './src/assets/uploads');
     } else {
