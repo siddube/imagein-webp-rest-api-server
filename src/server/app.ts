@@ -10,6 +10,9 @@ import express from 'express';
 // import cors - Cross Origin Resource Sharing
 import cors from 'cors';
 
+// Setup Routes
+import routes from '../routes';
+
 // instantiate app as an express module
 const app = express();
 
@@ -27,10 +30,8 @@ app.use(
 // make use of cors module in the app
 app.use(cors());
 
-// setup root route
-app.get('/', (req: express.Request, res: express.Response): void => {
-  res.status(200).json({ title: 'ImageIn Server Running' });
-});
+// make use of routes module in the app
+app.use('/', routes);
 
 // listen to incoming requests on development port
 app.listen(port, (): void => {
